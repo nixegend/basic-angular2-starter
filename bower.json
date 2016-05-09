@@ -1,0 +1,33 @@
+{
+  "name": "socket-io-game",
+  "description": "socket.io game app",
+  "main": "./server/www",
+  "authors": [
+    "Anton Panchenko"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "socket.io",
+    "nodeJS",
+    "webGL"
+  ],
+  "homepage": "https://github.com/nixegend/WGS.Game",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "traceur-runtime": "^0.0.108",
+    "reflect-metadata": "^0.1.3"
+  }
+}
