@@ -4,7 +4,7 @@ var traceur = require('gulp-traceur');
 
 gulp.task('copy:html', function () {
 	return gulp.src('app/**/*.html')
-		.pipe(gulp.dest('build'));
+		.pipe(gulp.dest('src'));
 });
 
 gulp.task('compile:es6', function () {
@@ -13,7 +13,7 @@ gulp.task('compile:es6', function () {
 			modules: 'instantiate',
 			annotations: true
 		}))
-		.pipe(gulp.dest('build'));
+		.pipe(gulp.dest('src'));
 });
 
 gulp.task('copy:libs', function () {
@@ -21,12 +21,12 @@ gulp.task('copy:libs', function () {
 		'node_modules/systemjs/dist/system.src.js',
 		'node_modules/angular2/bundles/angular2.min.js'
 	])
-		.pipe(gulp.dest('build/libs/'));
+		.pipe(gulp.dest('src/libs/'));
 });
 
 gulp.task('connect', function () {
 	connect.server({
-		root: ['build'],
+		root: ['src'],
 		host: '127.0.0.1',
 		port: 9000
 	})

@@ -1,19 +1,19 @@
 {
-  "name": "socket-io-game",
-  "description": "socket.io game app",
-  "main": "./server/www",
+  "name": "angular2_starter",
+  "description": "basic angular2 starter, lazy loading",
+  "main": "main.js",
   "authors": [
     "Anton Panchenko"
   ],
-  "license": "MIT",
+  "license": "ISC",
   "keywords": [
-    "socket.io",
-    "nodeJS",
-    "webGL"
+    "angular2",
+    "es6",
+    "gulp",
+    "nodeJS"
   ],
-  "homepage": "https://github.com/nixegend/WGS.Game",
+  "homepage": "https://github.com/nixegend/basic-angular2-starter",
   "moduleType": [
-    "amd",
     "es6",
     "globals",
     "node"

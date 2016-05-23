@@ -1,34 +1,41 @@
 {
-  "name": "angular2-es6-gulp",
+  "name": "angular2_starter",
   "version": "1.0.0",
-  "description": "angular2 with es6 experimental repo",
+  "description": "basic angular2 starter, lazy loading",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./server/starter",
+    "build": "",
+    "dev": "set NODE_ENV=dev && node ./server/starter"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/lsiric/angular2-es6-gulp.git"
+  "dependencies": {
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "lodash": "^4.12.0",
+    "angular2": "2.0.0-alpha.37",
+    "reflect-metadata": "^0.1.1",
+    "systemjs": "^0.18.17"
   },
-  "keywords": [
-    "angular2",
-    "es6",
-    "gulp"
-  ],
-  "author": "lsiric",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lsiric/angular2-es6-gulp/issues"
-  },
-  "homepage": "https://github.com/lsiric/angular2-es6-gulp#readme",
   "devDependencies": {
+    "open": "0.0.5",
     "gulp": "^3.9.0",
     "gulp-connect": "^2.2.0",
     "gulp-traceur": "^0.17.1"
   },
-  "dependencies": {
-    "angular2": "2.0.0-alpha.37",
-    "reflect-metadata": "^0.1.1",
-    "systemjs": "^0.18.17"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nixegend/basic-angular2-starter.git"
+  },
+  "keywords": [
+    "angular2",
+    "es6",
+    "gulp",
+    "nodeJS"
+  ],
+  "author": "Anton Panchenko <nixegend@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nixegend/basic-angular2-starter/issues"
+  },
+  "homepage": "https://github.com/nixegend/basic-angular2-starter#readme"
 }
