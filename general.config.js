@@ -1,6 +1,6 @@
 module.exports = {
-    staticDir: '../src',
-    appDir: '../app',
+    staticDir: 'src',
+    appDir: 'app',
     urlBasePath: '/',
     host: 'localhost',
     clientPort: 8080,
