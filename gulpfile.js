@@ -23,44 +23,53 @@ gulp.task('libs:js', () => {
 		.pipe($.sourcemaps.init())
 		.pipe($.concat('libraries.js'))
 		.pipe($.sourcemaps.write('.'))
-		.pipe(gulp.dest('./src'));
+		.pipe(gulp.dest(gConfig.staticDir));
 });
 
 gulp.task('copy:html', () => {
-	return gulp.src('./app/**/*.html')
-		.pipe(gulp.dest('./src'))
+	return gulp.src(gConfig.appDir + '/**/*.html')
+		.pipe(gulp.dest(gConfig.staticDir))
 		.pipe($.connect.reload());
 });
 
 gulp.task('compile:sass', () => {
-	return gulp.src('./app/**/*.scss')
+	return gulp.src(gConfig.appDir + '/**/*.scss')
 		.pipe($.sass().on('error', $.sass.logError))
 		.pipe($.autoprefixer('last 5 versions'))
 		.pipe($.minifyCss(''))
-		.pipe(gulp.dest('./src'))
+		.pipe(gulp.dest(gConfig.staticDir))
 		.pipe($.connect.reload());
 });
 
 gulp.task('compile:es6', () => {
-	return gulp.src('./app/**/*.js')
+	return gulp.src(gConfig.appDir + '/**/*.js')
 		.pipe($.babel())
-		.pipe(gulp.dest('./src'))
+		.pipe(gulp.dest(gConfig.staticDir))
 		.pipe($.connect.reload());
 });
 
 gulp.task('watch', () => {
-	gulp.watch(['./app/**/*.scss'], ['compile:sass']);
-	gulp.watch(['./app/**/*.html'], ['copy:html']);
-	gulp.watch(['./app/**/*.js'], ['compile:es6']);
+	gulp.watch([gConfig.appDir + '/**/*.scss'], ['compile:sass']);
+	gulp.watch([gConfig.appDir + '/**/*.html'], ['copy:html']);
+	gulp.watch([gConfig.appDir + '/**/*.js'], ['compile:es6']);
 });
 
 gulp.task('connect', () => {
 	$.connect.server({
-		port: 8080,
-		root: ['./src'],
-		host: 'localhost',
+		port: gConfig.clientPort,
+		root: [gConfig.staticDir],
+		host: gConfig.host,
 		livereload: true,
-		debug: true
+		debug: true,
+		middleware: function (connect, o) {
+			return [(function () {
+				let url = require('url');
+				let proxy = require('proxy-middleware');
+				var options = url.parse('http://' + gConfig.host + ':' + gConfig.serverPort + '/');
+				options.route = gConfig.urlAPI;
+				return proxy(options);
+			})()];
+		}
 	});
 });
 
