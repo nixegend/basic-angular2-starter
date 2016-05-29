@@ -14,11 +14,17 @@ const $ = require('gulp-load-plugins')({
 const LIBRARIES = [
     'systemjs/dist/system-polyfills.js',
     'angular2/bundles/angular2-polyfills.js',
+	'reflect-metadata/Reflect.js',
     'systemjs/dist/system.src.js',
     'rxjs/bundles/Rx.js',
     'angular2/bundles/angular2.dev.js',
+    'angular2/bundles/router.dev.js',
     'angular2/bundles/http.dev.js'
 ].map((file) => 'node_modules/' + file);
+
+gulp.task('clean', () => {
+	return gulp.src(gConfig.staticDir).pipe($.clean());
+});
 
 gulp.task('libs:js', () => {
 	return gulp.src(LIBRARIES)
@@ -82,6 +88,17 @@ gulp.task('connect', () => {
 			options.route = gConfig.urlAPI;
 			return [proxy(options)];
 		}
+	});
+});
+
+gulp.task('build', ['clean'], () => {
+	gulp.start([
+		'libs:js',
+		'copy:html',
+		'compile:es6',
+		'compile:sass'
+	], () => {
+		console.log('============== Project was builded ==============');
 	});
 });
 

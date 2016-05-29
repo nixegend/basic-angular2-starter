@@ -13,7 +13,7 @@ let server = http.createServer(app);
 server.listen(gConfig.serverPort);
 
 // static files
-app.use(express.static(path.join(__dirname, gConfig.staticDir)));
+app.use(express.static(path.join(__dirname, '../' + gConfig.staticDir)));
 
 app.get('/api/rrr', function (request, response) {
   response.send('lolll');
@@ -21,8 +21,8 @@ app.get('/api/rrr', function (request, response) {
 
 app.get('/*', function (req, res, next) {
   if (!(req.url.indexOf('/api/') === 0)) {
-    res.sendFile(path.join(__dirname, gConfig.staticDir + '/index.html'));
-    // res.render('index', { title: "WebGL-ioGame" }); // for ejs
+    res.sendFile(path.join(__dirname, '../' + gConfig.staticDir + '/index.html'));
+    // res.render('index', { title: "Angular2-starter" }); // for ejs
   } else {
     next();
   }
