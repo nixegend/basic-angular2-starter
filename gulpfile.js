@@ -3,7 +3,7 @@
 let gConfig = require('./general.config');
 let url = require('url');
 let open = require('open');
-let proxy = require('proxy-middleware');
+let proxy = require('http-proxy-middleware');
 let gulp = require('gulp');
 const $ = require('gulp-load-plugins')({
 	scope: ['devDependencies'],
@@ -84,9 +84,13 @@ gulp.task('connect', () => {
 		livereload: true,
 		debug: true,
 		middleware: function (connect, opt) {
-			let options = url.parse('http://' + gConfig.serverHost + ':' + gConfig.serverPort + '/');
-			options.route = gConfig.urlAPI;
-			return [proxy(options)];
+			return [
+				proxy(gConfig.urlAPI, {
+					target: 'http://' + gConfig.serverHost + ':' + gConfig.serverPort,
+					changeOrigin: true,
+					ws: true
+				})
+			]
 		}
 	});
 });
@@ -98,7 +102,7 @@ gulp.task('build', ['clean'], () => {
 		'compile:es6',
 		'compile:sass'
 	], () => {
-		console.log('============== Project was builded ==============');
+		console.log('======== Project was builded ========');
 	});
 });
 

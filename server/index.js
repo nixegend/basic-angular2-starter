@@ -15,10 +15,6 @@ server.listen(gConfig.serverPort);
 // static files
 app.use(express.static(path.join(__dirname, '../' + gConfig.staticDir)));
 
-app.get('/api/rrr', function (request, response) {
-  response.send('lolll');
-});
-
 app.get('/*', function (req, res, next) {
   if (!(req.url.indexOf('/api/') === 0)) {
     res.sendFile(path.join(__dirname, '../' + gConfig.staticDir + '/index.html'));
