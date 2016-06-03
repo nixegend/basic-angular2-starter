@@ -6,9 +6,19 @@ es6, dynamically loading modules, gulp, lazy loading
 ```bash
 npm start
 ```
+#### run the development environment
 ```bash
-npm run dev or gulp
+npm run dev
 ```
+#### or
 ```bash
-npm run build or gulp build
+gulp
+```
+#### run build
+```bash
+npm run build
+```
+#### or
+```bash
+gulp build
 ```
