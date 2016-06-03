@@ -2,6 +2,7 @@
 
 let gConfig = require('./general.config');
 let url = require('url');
+let path = require('path');
 let open = require('open');
 let proxy = require('http-proxy-middleware');
 let gulp = require('gulp');
@@ -83,6 +84,7 @@ gulp.task('connect', () => {
 		host: gConfig.clientHost,
 		livereload: true,
 		debug: true,
+		fallback: path.join(__dirname, gConfig.staticDir + '/index.html'),
 		middleware: function (connect, opt) {
 			return [
 				proxy(gConfig.urlAPI, {

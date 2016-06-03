@@ -1,4 +1,14 @@
-# lazy-loading-routes-angular2.js
-lazy-loading-routes-angular2.js
+# basic-angular2-starter
+es6, dynamically loading modules, gulp, lazy loading
 
--for es6
+### npm commands
+
+```bash
+npm start
+```
+```bash
+npm run dev or gulp
+```
+```bash
+npm run build or gulp build
+```
