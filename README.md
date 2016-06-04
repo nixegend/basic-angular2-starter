@@ -1,24 +1,17 @@
 # basic-angular2-starter
 es6, dynamically loading modules, gulp, lazy loading
 
-### npm commands
-
+###### start
 ```bash
 npm start
 ```
-#### run the development environment
+
+###### run the development environment
 ```bash
-npm run dev
+npm run dev **OR** gulp
 ```
-#### or
+
+###### run build
 ```bash
-gulp
-```
-#### run build
-```bash
-npm run build
-```
-#### or
-```bash
-gulp build
+npm run build **OR** gulp build
 ```
