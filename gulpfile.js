@@ -46,7 +46,7 @@ gulp.task('compile:sass', () => {
 	return gulp.src(gConfig.appDir + '/**/*.scss')
 		.pipe($.sass().on('error', $.sass.logError))
 		.pipe($.autoprefixer('last 5 versions'))
-		.pipe($.minifyCss(''))
+		.pipe($.cleanCss())
 		.pipe(gulp.dest(gConfig.staticDir))
 		.pipe($.connect.reload());
 });
